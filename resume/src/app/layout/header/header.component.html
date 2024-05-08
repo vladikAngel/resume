@@ -7,11 +7,8 @@
       <ul class="nav-bar">
         <li *ngFor="let item of navigateItems" class="nav-bar-item">
           <a #rla="routerLinkActive" routerLinkActive="active"
-             [routerLink]="[item.customUrl]" >{{item.name}}</a>
+             [routerLink]="[item.customUrl]" (click)="scrollToBlock(item.blockId)" >{{item.name}}</a>
         </li>
-<!--        <li class="nav-bar-item"><a href="/">About</a></li>-->
-<!--        <li class="nav-bar-item"><a href="/">Portfolio</a></li>-->
-<!--        <li class="nav-bar-item"><a href="/">Contact</a></li>-->
       </ul>
     </div>
   </div>

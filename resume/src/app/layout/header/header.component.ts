@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {ScrollService} from "../../pages/scroll.service";
 
 @Component({
   selector: 'app-header',
@@ -17,8 +18,15 @@ export class HeaderComponent {
 
   navigateItems: Array<any> = [
     { name: 'Home', customUrl: '/'},
-    { name: 'About', customUrl: '/'},
-    { name: 'Portfolio', customUrl: '/'},
-    { name: 'Contact', customUrl: '/'}
+    { name: 'About', customUrl: '/', blockId: 'block1'},
+    { name: 'Portfolio', customUrl: '/' , blockId: 'block3'},
+    { name: 'Contact', customUrl: '/', blockId: 'block2' }
   ]
+
+  constructor(private scrollService: ScrollService) { }
+
+  scrollToBlock(blockId: string) {
+    this.scrollService.scroll(blockId);
+    console.log(blockId)
+  }
 }
