@@ -1,5 +1,11 @@
+@import url('assets/style/style.css');
+
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-image: url("/assets/images/home.jpg");
 }
 h1,h2,h3,h4,h5,h6{
   margin: unset;
@@ -9,7 +15,7 @@ p,span{
 }
 
 .wrapper {
-  max-width:1220px;
+  max-width:1420px;
   margin:0 auto;
   padding: 0 15px;
 }
