@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NgClass, NgForOf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {ScrollService} from "../../pages/scroll.service";
+import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -9,24 +11,31 @@ import {ScrollService} from "../../pages/scroll.service";
   imports: [
     NgForOf,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy{
+  navigateItems!: Array<NavigateInterface>;
+  activeBlockId: string = 'home-block';
+  private scrollSubscription!: Subscription;
 
-  navigateItems: Array<any> = [
-    { name: 'Home', customUrl: '/'},
-    { name: 'About', customUrl: '/', blockId: 'block1'},
-    { name: 'Portfolio', customUrl: '/' , blockId: 'block3'},
-    { name: 'Contact', customUrl: '/', blockId: 'block2' }
-  ]
+  constructor(private scrollService: ScrollService) {}
 
-  constructor(private scrollService: ScrollService) { }
+  ngOnInit() {
+    this.navigateItems = this.scrollService.getNavigateItems();
+    this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
+      this.activeBlockId = blockId;
+    });
+  }
+
+  ngOnDestroy() {
+    this.scrollSubscription.unsubscribe();
+  }
 
   scrollToBlock(blockId: string) {
     this.scrollService.scroll(blockId);
-    console.log(blockId)
   }
 }

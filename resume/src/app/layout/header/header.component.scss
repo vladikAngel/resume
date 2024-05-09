@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding-top: 15px;
 }
-.active{
+.color{
   color: #00abf0;
 }
 
@@ -27,14 +27,22 @@
 
 .nav-bar-item {
   list-style-type: none;
-  a{
-    font-size: 22px;
-    color: #ededed;
-    text-decoration: none;
-    font-weight: 500;
 
-    &:hover {
-      color: #00abf0;
-    }
+
+
+
+}
+
+.item{
+  font-size: 22px;
+  color: #ededed;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    color: #00abf0;
   }
+}
+.item.active{
+  color: #00abf0;
 }

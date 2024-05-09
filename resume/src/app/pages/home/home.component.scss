@@ -1,0 +1,48 @@
+
+.home{
+ margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+
+}
+h1:hover {
+  font-size: 50px;
+  padding-bottom: 0;
+}
+.text-white:hover{
+  font-size: 24px;
+  padding-bottom: 0;
+}
+.home-page-text{
+  padding-bottom: 7px;
+
+.text-blue-bold:hover{
+  font-size: 32px;
+}
+}
+
+.home-page{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.home-page-left{
+  display: flex;
+  flex-direction: column;
+  max-width: 780px;
+  gap: 0.5rem;
+}
+.main-images{
+  border-radius: 10px;
+  max-height: 310px;
+}
+.home-page-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.bth img{
+  vertical-align: middle;
+  width: 20px;
+}

@@ -1,13 +1,15 @@
-<div class="wrapper">
+<div id="home-block" class="wrapper">
   <div class="header">
     <div class="logo">
      <a href="/" class="text-logo">Korpan</a>
     </div>
     <div class="header-right">
       <ul class="nav-bar">
-        <li *ngFor="let item of navigateItems" class="nav-bar-item">
-          <a #rla="routerLinkActive" routerLinkActive="active"
-             [routerLink]="[item.customUrl]" (click)="scrollToBlock(item.blockId)" >{{item.name}}</a>
+        <li  *ngFor="let item of navigateItems" class="nav-bar-item">
+          <a class="item"
+             [class.active]="activeBlockId === item.blockId"
+             [routerLink]="[item.customUrl]" (click)="scrollToBlock(item.blockId)"
+             >{{item.name}}</a>
         </li>
       </ul>
     </div>
