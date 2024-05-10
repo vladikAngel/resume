@@ -1,0 +1,31 @@
+@media screen and (max-width: 768px) {
+  h1{
+    font-size: 30px;
+    padding-bottom: 4px;
+  }
+  .home-page-text{
+    padding-bottom: 7.5px!important;
+  }
+  .home-page{
+    flex-direction: column!important;
+  }
+  .home-page-left{
+    gap: 1.5rem!important;
+  }
+  .bth{
+    font-size: 12px!important;
+    padding: 7px 5px!important;
+  }
+  .text-blue-bold{
+    font-size: 22px;
+  }
+  .text-white{
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-page{
+    flex-direction: column!important;
+  }
+}

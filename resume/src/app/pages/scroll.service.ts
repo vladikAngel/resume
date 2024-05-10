@@ -6,22 +6,37 @@ import {NavigateInterface} from "../core/interfaces/home/navigate.interface";
   providedIn: 'root'
 })
 export class ScrollService {
-  private scrollSubject = new BehaviorSubject<string>('home-block');
+  private scrollBehaviorSubject = new BehaviorSubject<string>('home-block');
+  private languageBehaviorSubject = new BehaviorSubject<string>('Ru');
 
   getNavigateItems(): Array<NavigateInterface>{
     return [
-      { name: 'Home', customUrl: '/', blockId: 'home-block' },
-      { name: 'About', customUrl: '/', blockId: 'about-block' },
-      { name: 'Portfolio', customUrl: '/', blockId: 'portfolio-block' },
-      { name: 'Contact', customUrl: '/', blockId: 'contact-block' }
+      {  nameRu: 'Главная', nameEn: 'Home', customUrl: '/', blockId: 'home-block' },
+      {  nameRu: 'Обо мне', nameEn: 'About', customUrl: '/', blockId: 'about-block' },
+      {  nameRu: 'Портфолио',nameEn: 'Portfolio', customUrl: '/', blockId: 'portfolio-block' },
+      // Мои проекты переименовать
+      {  nameRu: 'Связь со мной',nameEn: 'Contact', customUrl: '/', blockId: 'contact-block' }
     ];
   }
 
   scroll(blockId: string) {
-    this.scrollSubject.next(blockId);
+    this.scrollBehaviorSubject.next(blockId);
   }
 
   getScrollSubject() {
-    return this.scrollSubject.asObservable();
+    return this.scrollBehaviorSubject.asObservable();
+  }
+
+  // Метод для отправки информации о смене языка
+  updateLanguage(language: string) {
+    this.languageBehaviorSubject.next(language);
+    localStorage.setItem('selectedLanguage', language);
+  }
+
+  // Метод для получения информации о смене языка
+  getLanguageUpdate() {
+    const storedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+    this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
+    return this.languageBehaviorSubject.asObservable();
   }
 }

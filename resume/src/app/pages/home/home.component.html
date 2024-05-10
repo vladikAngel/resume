@@ -1,36 +1,34 @@
 <div class="wrapper">
   <div class="home">
     <div class="home-page">
-      <div class="home-page-left">
-        <div class="home-page-title">
-          <h1>Hi, I'm Korpan Vladislav</h1>
-        </div>
-        <div class="home-page-text">
+      <div  class="home-page-left" >
+        <div class="animation" [@fadeInFromSides]>
+          <div class="home-page-title">
+            <h1>{{ currentLanguage === 'En' ? AboutMeText.En.greeting : AboutMeText.Ru.greeting}}</h1>
+          </div>
+          <div class="home-page-text">
             <span class="text-blue-bold">
-              Frontend Developer
+              {{ currentLanguage === 'En' ? AboutMeText.En.profession : AboutMeText.Ru.profession }}
             </span>
-        </div>
-        <div class="home-page-text">
+          </div>
+          <div class="home-page-text">
             <span class="text-white">
-               I am an experienced frontend developer proficient in creating high-quality web applications using
-              <strong>HTML</strong>,
-              <strong>CSS</strong>, and
-              <strong>JavaScript/TypeScript</strong>.
-              I am also knowledgeable in UX/UI design principles and performance optimization, with a focus on
+              {{ currentLanguage === 'En' ? AboutMeText.En.description : AboutMeText.Ru.description}}
               <strong class="highlight">
                  Angular<img class="angular" src="assets/images/Angular_gradient.png"></strong>.</span>
+          </div>
         </div>
 
-        <div class="home-page-button">
-          <button (click)="scrollToContact()"  class="bth"><span>Contact me</span><img src="assets/images/call.svg"></button>
-          <button class="bth"><span>More details</span>&rarr;</button>
+        <div [@animationBth] class="home-page-button">
+          <button (click)="scrollToContact()"  class="bth"><span>{{ currentLanguage === 'En' ? AboutMeText.En.contact : AboutMeText.Ru.contact}}</span><img src="assets/images/call.svg"></button>
+          <button class="bth"><span>{{ currentLanguage === 'En' ? AboutMeText.En.more : AboutMeText.Ru.more}}</span>&rarr;</button>
         </div>
       </div>
 
 
-      <div class="home-page-right">
+      <div [@imageAnimation]="currentState" class="home-page-right">
         <div class="home-page-image">
-          <img class="main-images" src="assets/images/frontend.jpg">
+          <img class="main-image"  src="assets/images/frontend.png">
         </div>
       </div>
     </div>

@@ -1,19 +1,31 @@
 <div id="home-block" class="wrapper">
-  <div class="header">
+  <div class="header" [@fadeInRight]>
     <div class="logo">
-     <a href="/" class="text-logo">Korpan</a>
+<!--      <a href="/" class="text-logo"></a>-->
+      <div class="dropdown" (click)="toggleDropdown()">
+        <button class="dropbth">
+          <div *ngIf="currentLanguage === 'Ru'"  class="Ru">
+            <img   src="assets/images/iconRu.png">Ru
+          </div>
+          <div *ngIf="currentLanguage === 'En'" class="En">
+            <img   src="assets/images/iconUsa.png">En
+          </div>
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen">
+          <a (click)="switchLanguage('Ru')"><img src="assets/images/iconRu.png"><span>Russia</span></a>
+          <a (click)="switchLanguage('En')"><img src="assets/images/iconUsa.png"><span>English</span></a>
+        </div>
+      </div>
     </div>
     <div class="header-right">
       <ul class="nav-bar">
-        <li  *ngFor="let item of navigateItems" class="nav-bar-item">
+        <li *ngFor="let item of navigateItems" class="nav-bar-item">
           <a class="item"
              [class.active]="activeBlockId === item.blockId"
              [routerLink]="[item.customUrl]" (click)="scrollToBlock(item.blockId)"
-             >{{item.name}}</a>
+          >{{currentLanguage === 'Ru' ? item.nameRu : item.nameEn}}</a>
         </li>
       </ul>
     </div>
   </div>
 </div>
-
-

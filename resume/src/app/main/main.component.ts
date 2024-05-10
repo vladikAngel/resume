@@ -29,7 +29,20 @@ export class MainComponent implements OnInit,OnDestroy {
   constructor(private scrollService: ScrollService) {}
 
   ngOnInit() {
+    this.getHeaderItem()
+    this.getScrollSubscription()
+  }
+  ngOnDestroy() {
+    if (this.scrollSubscription){
+      this.scrollSubscription.unsubscribe();
+    }
+  }
+
+  getHeaderItem(){
     this.navigateItems = this.scrollService.getNavigateItems();
+  }
+
+  getScrollSubscription(){
     this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
       if (this.scrollSubscription){
         const block = document.getElementById(blockId);
@@ -39,12 +52,6 @@ export class MainComponent implements OnInit,OnDestroy {
         this.activeBlockId = blockId;
       }
     });
-  }
-
-  ngOnDestroy() {
-    if (this.scrollSubscription){
-      this.scrollSubscription.unsubscribe();
-    }
   }
 
   scrollToBlock(blockId: string) {

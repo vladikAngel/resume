@@ -1,5 +1,6 @@
 export interface NavigateInterface {
-  name: string;
+  nameRu: string;
+  nameEn: string;
   customUrl: string;
   blockId: string;
 }

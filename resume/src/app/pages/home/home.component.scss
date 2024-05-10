@@ -1,6 +1,6 @@
 
 .home{
- margin-top: 10em;
+ margin-top: 6em;
   display: flex;
   flex-direction: column;
 
@@ -10,21 +10,26 @@ h1:hover {
   padding-bottom: 0;
 }
 .text-white:hover{
-  font-size: 24px;
+  //font-size: 24px;
   padding-bottom: 0;
+  padding-top: 10px;
 }
 .home-page-text{
-  padding-bottom: 7px;
+  padding-bottom: 15px;
 
 .text-blue-bold:hover{
   font-size: 32px;
 }
 }
-
+.home-page-text:hover{
+  //padding-top: 10px;
+  //padding-bottom: 26px;
+}
 .home-page{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .home-page-left{
   display: flex;
@@ -32,15 +37,17 @@ h1:hover {
   max-width: 780px;
   gap: 0.5rem;
 }
-.main-images{
-  border-radius: 10px;
-  max-height: 310px;
-}
+
 .home-page-button{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 10px;
+}
+.main-image{
+  max-width: 370px;
+}
+.home-page-button:hover{
+  padding-top: 0;
 }
 .bth img{
   vertical-align: middle;

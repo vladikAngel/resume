@@ -30,8 +30,9 @@ h1{
   color: #ededed;
   font-weight: 400;
   line-height: 1.2;
-  transition: font-size 0.7s ease, padding 0.7s ease ,line-height 0.7s ease;
-  padding-top: 15px;
+  /*transition: font-size 0.7s ease, padding 0.7s ease ,line-height 0.7s ease;*/
+  /*padding-top: 15px;*/
+
 }
 .angular{
   width: 25px;
