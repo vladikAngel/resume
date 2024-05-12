@@ -6,6 +6,8 @@ import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {Subscription} from "rxjs";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {TranslateModule} from "@ngx-translate/core";
+import {LoaderComponent} from "../../../assets/shared/components/loader/loader.component";
+import {NgxSpinnerService} from "ngx-spinner";
 
 
 @Component({
@@ -17,7 +19,8 @@ import {TranslateModule} from "@ngx-translate/core";
     RouterLink,
     NgClass,
     NgIf,
-    TranslateModule
+    TranslateModule,
+    LoaderComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -39,7 +42,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
 
 
-  constructor(private scrollService: ScrollService)
+  constructor(private scrollService: ScrollService,
+              private spinner: NgxSpinnerService)
   {}
 
   ngOnInit() {
@@ -49,6 +53,14 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
 
+  showSpinner(){
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
+  }
+
   ngOnDestroy() {
     this.scrollSubscription.unsubscribe();
   }
@@ -57,6 +69,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
     });
+
   }
 
   getHeaderItem(){
@@ -77,9 +90,12 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.currentLanguage = language;
     this.scrollService.updateLanguage(language);
 
+    this.showSpinner()
   }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+
   }
+
 }

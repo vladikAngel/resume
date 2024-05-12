@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit{
     Ru: {
       greeting: "Привет, я Корпан Владислав",
       profession: "Frontend Разработчик",
-      description: "Я опытный frontend разработчик, владеющий созданием высококачественных веб-приложений с использованием HTML, CSS и JavaScript/TypeScript. Я также знаком с принципами дизайна UX/UI и оптимизацией производительности, с акцентом на",
+      description: "Я опытный frontend разработчик, владеющий созданием высококачественных веб-приложений с использованием HTML, CSS и JavaScript/TypeScript. А также знаком с принципами дизайна UX/UI и оптимизацией производительности, с акцентом на",
       more: "Больше информации",
       contact: "Связь со мной",
     },
@@ -72,7 +72,6 @@ export class HomeComponent implements OnInit{
   getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
-      console.log(this.currentLanguage)
     });
   }
 
