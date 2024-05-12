@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {PortfolioComponent} from "../pages/portfolio/portfolio.component";
-import {ContactComponent} from "../pages/contact/contact.component";
-import {AboutComponent} from "../pages/about/about.component";
-import {HomeComponent} from "../pages/home/home.component";
+import {PortfolioComponent} from "../portfolio/portfolio.component";
+import {ContactComponent} from "../contact/contact.component";
+import {AboutComponent} from "../about/about.component";
+import {HomeComponent} from "../home/home.component";
 import {Subscription} from "rxjs";
-import {ScrollService} from "../pages/scroll.service";
+import {ScrollService} from "../scroll.service";
 import {NgForOf} from "@angular/common";
-import {NavigateInterface} from "../core/interfaces/home/navigate.interface";
+import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 
 @Component({
   selector: 'app-main',

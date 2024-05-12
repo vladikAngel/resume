@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {FooterComponent} from "./layout/footer/footer.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -9,7 +8,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent,FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet, HeaderComponent,FontAwesomeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
