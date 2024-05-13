@@ -22,7 +22,7 @@
         <li *ngFor="let item of navigateItems" class="nav-bar-item">
           <a class="item"
              [class.active]="activeBlockId === item.blockId"
-             [routerLink]="[item.customUrl]" (click)="scrollToBlock(item.blockId)"
+              (click)="scrollToBlock(item.blockId)"
           >{{currentLanguage === 'Ru' ? item.nameRu : item.nameEn}}</a>
         </li>
       </ul>

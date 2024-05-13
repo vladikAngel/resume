@@ -6,6 +6,6 @@ import {WelcomeComponent} from "./pages/welcome/welcome.component";
 
 export const routes: Routes = [
   { path: 'home', component: MainComponent },
-   {path: 'welcome', component: WelcomeComponent},
+  {path: 'welcome', component: WelcomeComponent},
   {path: '', redirectTo: 'welcome', pathMatch: 'full'}
 ];

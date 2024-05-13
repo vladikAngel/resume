@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
    this.getHeaderItem()
-   this.getScrollSubscription()
+    this.getScrollSubscription()
    this.getswitchLanguage()
     // const storedLanguage = localStorage.getItem('selectedLanguage');
     // if (!storedLanguage) {
@@ -79,7 +79,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
   getHeaderItem(){
     this.navigateItems = this.scrollService.getNavigateItems();
   }
-
   getScrollSubscription(){
     this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
       this.activeBlockId = blockId;
