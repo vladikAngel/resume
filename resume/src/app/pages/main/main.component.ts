@@ -7,17 +7,19 @@ import {Subscription} from "rxjs";
 import {ScrollService} from "../scroll.service";
 import {NgForOf} from "@angular/common";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
+import {HeaderComponent} from "../../layout/header/header.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [
-    PortfolioComponent,
-    ContactComponent,
-    AboutComponent,
-    HomeComponent,
-    NgForOf
-  ],
+    imports: [
+        PortfolioComponent,
+        ContactComponent,
+        AboutComponent,
+        HomeComponent,
+        NgForOf,
+        HeaderComponent
+    ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

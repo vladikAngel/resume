@@ -32,7 +32,7 @@ export class LoaderComponent implements OnInit {
 
   getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
-      console.log(language)
+      // console.log(language)
       this.currentLanguage = language;
     });
   }

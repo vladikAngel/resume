@@ -10,6 +10,7 @@ import {LoaderComponent} from "../../../assets/shared/components/loader/loader.c
 import {NgxSpinnerService} from "ngx-spinner";
 
 
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -50,8 +51,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
    this.getHeaderItem()
    this.getScrollSubscription()
    this.getswitchLanguage()
+    // const storedLanguage = localStorage.getItem('selectedLanguage');
+    // if (!storedLanguage) {
+    //   this.switchLanguage('Ru');
+    // }
   }
-
 
   showSpinner(){
     this.spinner.show();
@@ -89,7 +93,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   switchLanguage(language: string) {
     this.currentLanguage = language;
     this.scrollService.updateLanguage(language);
-
+    console.log(language)
     this.showSpinner()
   }
 

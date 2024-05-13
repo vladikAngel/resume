@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit{
   getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
+      console.log(language)
     });
   }
 

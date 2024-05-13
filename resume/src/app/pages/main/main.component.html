@@ -1,12 +1,4 @@
-<div class="main">
-  <div class="scroll-dots">
-    <div *ngFor="let item of navigateItems"
-         (click)="scrollToBlock(item.blockId)"
-         [class.active]="activeBlockId === item.blockId"
-         class="scroll-dot">
-
-    </div>
-  </div>
+<app-header></app-header>
 
 
   <div class="scroll-page">
@@ -15,5 +7,13 @@
     <app-portfolio></app-portfolio>
     <app-contact></app-contact>
   </div>
-</div>
 
+
+<div class="main">
+  <div class="scroll-dots">
+    <div *ngFor="let item of navigateItems"
+         (click)="scrollToBlock(item.blockId)"
+         [class.active]="activeBlockId === item.blockId"
+         class="scroll-dot">
+    </div>
+  </div></div>

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./layout/header/header.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {NgxSpinnerService} from "ngx-spinner";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -12,22 +12,25 @@ import {NgxSpinnerService} from "ngx-spinner";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'resume';
 
 
-  constructor(private spinner: NgxSpinnerService) {
-  }
+  constructor(private router: Router) {
 
-  ngOnInit(){
-   this.showSpinner()
-  }
-
-  showSpinner(){
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 500);
   }
 }
+
+
+  // ngOnInit(){
+  //  this.showSpinner()
+  // }
+  //
+  // showSpinner(){
+  //   this.spinner.show();
+  //
+  //   setTimeout(() => {
+  //     this.spinner.hide();
+  //   }, 500);
+  // }
+

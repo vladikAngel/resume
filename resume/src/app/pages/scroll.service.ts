@@ -13,10 +13,14 @@ export class ScrollService {
     return [
       {  nameRu: 'Главная', nameEn: 'Home', customUrl: '/', blockId: 'home-block' },
       {  nameRu: 'Обо мне', nameEn: 'About', customUrl: '/', blockId: 'about-block' },
-      {  nameRu: 'Портфолио',nameEn: 'Portfolio', customUrl: '/', blockId: 'portfolio-block' },
-      // Мои проекты переименовать
+      {  nameRu: 'Проекты',nameEn: 'Project', customUrl: '/', blockId: 'portfolio-block' },
       {  nameRu: 'Связь со мной',nameEn: 'Contact', customUrl: '/', blockId: 'contact-block' }
     ];
+  }
+
+  constructor() {
+    const storedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+    this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
   }
 
   scroll(blockId: string) {
@@ -31,12 +35,18 @@ export class ScrollService {
   updateLanguage(language: string) {
     this.languageBehaviorSubject.next(language);
     localStorage.setItem('selectedLanguage', language);
+    console.log(language)
   }
 
   // Метод для получения информации о смене языка
+  // getLanguageUpdate() {
+  //   const storedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+  //   console.log(storedLanguage)
+  //   this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
+  //   return this.languageBehaviorSubject.asObservable();
+  // }
+
   getLanguageUpdate() {
-    const storedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
-    this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
     return this.languageBehaviorSubject.asObservable();
   }
 }
