@@ -1,17 +1,16 @@
 h1 {
   color: #ededed;
-  font-size: 48px;
-  transition: font-size 0.7s ease, padding 0.7s ease, line-height 0.7s ease;
-  line-height: 1.2;
+  font-size: 38px;
+  transition: font-size 0.7s ease, padding 0.3s ease, line-height 0.7s ease;
   padding-bottom: 7px;
 }
 
 .text-blue-bold {
-  font-size: 30px;
+  font-size: 24px;
   color: #00abf0;
-  font-weight: 700;
+  font-weight: 500;
   transition: font-size 0.7s ease, padding 0.7s ease, line-height 0.7s ease;
-  line-height: 1.2;
+ 
 }
 .text-white-tittle{
   color: #ededed;
