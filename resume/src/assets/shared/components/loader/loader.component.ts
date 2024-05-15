@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
-import {ScrollService} from "../../../../app/pages/scroll.service";
+import {ScrollService} from "../../../../app/core/services/scroll.service";
 
 @Component({
   selector: 'app-loader',

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {ScrollService} from "../scroll.service";
+import {ScrollService} from "../../core/services/scroll.service";
 import {animate, AnimationBuilder, state, style, transition, trigger} from "@angular/animations";
 import {NgOptimizedImage} from "@angular/common";
 

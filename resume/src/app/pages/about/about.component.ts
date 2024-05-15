@@ -1,11 +1,10 @@
-import {Component, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, HostListener, OnInit, } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IExperience} from "../../core/interfaces/about/experience.interface";
-import EventEmitter from "events";
-import {forkJoin} from "rxjs";
-import {MockDataService} from "../../core/services/mock/mock-data.service";
-import {ScrollService} from "../scroll.service";
+
+import {MockDataService} from "../../core/services/mock-data.service";
+import {ScrollService} from "../../core/services/scroll.service";
 
 
 

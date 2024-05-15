@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {ScrollService} from "../../pages/scroll.service";
+import {ScrollService} from "../../core/services/scroll.service";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {Subscription} from "rxjs";
 import {animate, style, transition, trigger} from "@angular/animations";

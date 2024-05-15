@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
-import {IExperience} from "../../interfaces/about/experience.interface";
-import {IProject} from "../../interfaces/about/projects.interface";
+import {IExperience} from "../interfaces/about/experience.interface";
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +23,9 @@ export class MockDataService {
           role: 'Angular Developer',
           grade: 'Intern',
           period: 'Sept 2023 - Oct 2023',
-          description: 'Leading a team of Angular developers, ensuring project goals are met and deadlines are adhered to.\n' +
-            'Making technical decisions and determining application architecture based on requirements and business needs.\n' +
-            'Participating in planning and task allocation within the team, ensuring an even workload and development of team members.\n' +
-            'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
+          description: 'As a frontend developer intern specializing in Angular, I actively contribute to web application development.\n ' +
+            'My responsibilities involve crafting user interfaces using Angular and TypeScript, interfacing with APIs, debugging code, and optimizing performance.\n ' +
+            'Additionally, I am committed to learning and exploring new opportunities to enhance projects.\n',
           instruments: ['']
         },
         {
@@ -34,21 +33,21 @@ export class MockDataService {
           role: 'Angular Developer',
           grade: 'Junior',
           period: 'Oct 2023 - May 2024',
-          description: 'Leading a team of Angular developers, ensuring project goals are met and deadlines are adhered to.\n' +
-            'Making technical decisions and determining application architecture based on requirements and business needs.\n' +
-            'Participating in planning and task allocation within the team, ensuring an even workload and development of team members.\n' +
-            'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
+          description: 'Creating and maintaining user interfaces using Angular. Developing modular and reusable components.\n ' +
+            'Implementing practices for performance optimization and security.\n ' +
+            'Working with REST APIs for backend integration. Writing tests to ensure code quality.\n ' +
+            'Participating in team discussions.',
           instruments: ['']
         },
         {
           id: 1,
-          role: 'Angular Developer',
+          role: 'Ангуляр Разработчик',
           grade: 'Junior +',
           period: 'May 2024 - PRESENT',
-          description: 'Leading a team of Angular developers, ensuring project goals are met and deadlines are adhered to.\n' +
-            'Making technical decisions and determining application architecture based on requirements and business needs.\n' +
-            'Participating in planning and task allocation within the team, ensuring an even workload and development of team members.\n' +
-            'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
+          description: 'Developing and maintaining user interfaces using Angular. Creating modular and reusable components.\n ' +
+            'Applying best practices for performance optimization and security. Integrating with the backend through REST API.\n' +
+            'Writing tests to ensure code quality. Participating in team discussions and improving development processes. \n' +
+            'Assisting in mentoring junior developers and facilitating knowledge sharing within the team.',
           instruments: ['']
         },
       ];
@@ -59,37 +58,35 @@ export class MockDataService {
           role: 'Ангуляр Разработчик',
           grade: 'Стажер',
           period: 'Сент 2023 - Окт 2023',
-          description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
-            'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
-            'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
-            'Взаимодействие с управлением и другими отделами для обеспечения эффективного выполнения проекта и достижения бизнес-целей.',
+          description: 'В роли стажера frontend-разработчика на Angular я активно участвую в процессе создания веб-приложений.\n ' +
+            'Мои обязанности включают разработку пользовательского интерфейса с использованием Angular и TypeScript, взаимодействие с API, отладку кода и оптимизацию производительности. \n' +
+            'Я также стремлюсь к обучению и поиску новых возможностей для улучшения проектов.',
           instruments: ['']
         },
         {
           id: 1,
-          role: 'Angular Developer',
+          role: 'Ангуляр Разработчик',
           grade: 'Джуниор',
           period: 'Окт 2023 - Май 2024',
-          description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
-            'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
-            'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
-            'Взаимодействие с управлением и другими отделами для обеспечения эффективного выполнения проекта и достижения бизнес-целей.',
+          description: 'Создание и поддержка пользовательских интерфейсов с использованием Angular.\n' +
+            'Разработка модульных и повторно используемых компонентов. Внедрение  практик по оптимизации производительности и безопасности.\n ' +
+            'Работа с REST API для интеграции с backend. Написание тестов для обеспечения качества кода.\n ' +
+            'Участие в командных обсуждениях.',
           instruments: ['']
         },
         {
           id: 2,
-          role: 'Angular Developer',
+          role: 'Ангуляр Разработчик',
           grade: 'Джуниор +',
           period: 'Май 2024 - Сегодня',
-          description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
-            'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
-            'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
-            'Взаимодействие с управлением и другими отделами для обеспечения эффективного выполнения проекта и достижения бизнес-целей.',
+          description: 'Разработка и поддержка пользовательских интерфейсов с использованием Angular. ' +
+            'Создание модульных и повторно используемых компонентов. Применение лучших практик для оптимизации производительности и обеспечения безопасности. ' +
+            'Интеграция с backend через REST API. Написание тестов для проверки качества кода. Участие в командных обсуждениях и улучшении процессов разработки. ' +
+            'Помощь в обучении младших разработчиков и содействие обмену знаниями в команде.',
           instruments: ['']
         },
       ];
     } else {
-      // Если указан неподдерживаемый язык, возвращаем пустой массив
       experience = [];
     }
 

@@ -1,10 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PortfolioComponent} from "../portfolio/portfolio.component";
-
 import {AboutComponent} from "../about/about.component";
 import {HomeComponent} from "../home/home.component";
 import {Subscription} from "rxjs";
-import {ScrollService} from "../scroll.service";
+import {ScrollService} from "../../core/services/scroll.service";
 import {NgForOf} from "@angular/common";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {HeaderComponent} from "../../layout/header/header.component";

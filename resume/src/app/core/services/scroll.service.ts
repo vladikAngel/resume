@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {NavigateInterface} from "../core/interfaces/home/navigate.interface";
+import {Injectable, OnInit} from '@angular/core';
+import {BehaviorSubject,} from 'rxjs';
+import {NavigateInterface} from "../interfaces/home/navigate.interface";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScrollService {
+export class ScrollService implements OnInit{
   private scrollBehaviorSubject = new BehaviorSubject<string>('home-block');
-  private languageBehaviorSubject = new BehaviorSubject<string>('Ru');
+  public languageBehaviorSubject = new BehaviorSubject<string>('Ru');
 
   getNavigateItems(): Array<NavigateInterface>{
     return [
@@ -19,6 +19,10 @@ export class ScrollService {
   }
 
   constructor() {
+
+  }
+
+  ngOnInit() {
     const storedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
     this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
   }

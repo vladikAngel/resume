@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import { RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./layout/header/header.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {filter} from "rxjs";
+
 
 @Component({
   selector: 'app-root',
@@ -15,22 +15,7 @@ import {filter} from "rxjs";
 export class AppComponent {
   title = 'resume';
 
-
-  constructor(private router: Router) {
-
-  }
 }
 
 
-  // ngOnInit(){
-  //  this.showSpinner()
-  // }
-  //
-  // showSpinner(){
-  //   this.spinner.show();
-  //
-  //   setTimeout(() => {
-  //     this.spinner.hide();
-  //   }, 500);
-  // }
 
