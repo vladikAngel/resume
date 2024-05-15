@@ -47,14 +47,14 @@ export class HomeComponent implements OnInit{
     Ru: {
       greeting: "Привет, я Корпан Владислав",
       profession: "Frontend Разработчик",
-      description: "Я опытный frontend разработчик, владеющий созданием высококачественных веб-приложений с использованием HTML, CSS и JavaScript/TypeScript. А также знаком с принципами дизайна UX/UI и оптимизацией производительности, с акцентом на",
+      description: "Я опытный frontend разработчик, владеющий созданием высококачественных веб-приложений с использованием HTML, CSS и JavaScript/TypeScript. В своей работе я использую современные технологии и инструменты для создания динамичных и отзывчивых пользовательских интерфейсов на",
       more: "Больше информации",
       contact: "Связь со мной",
     },
    En: {
       greeting: "Hi, I'm Korpan Vladislav",
       profession: "Frontend Developer",
-      description: "I am an experienced frontend developer proficient in creating high-quality web applications using HTML, CSS, and JavaScript/TypeScript. I am also knowledgeable in UX/UI design principles and performance optimization, with a focus on",
+      description: "I am an experienced frontend developer skilled in creating high-quality web applications using HTML, CSS, and JavaScript/TypeScript. In my work, I utilize modern technologies and tools to build dynamic and responsive user interfaces with",
       more: "More details",
       contact: "Contact me",
     }
