@@ -35,7 +35,6 @@ export class ScrollService {
   updateLanguage(language: string) {
     this.languageBehaviorSubject.next(language);
     localStorage.setItem('selectedLanguage', language);
-    console.log(language)
   }
 
   // Метод для получения информации о смене языка

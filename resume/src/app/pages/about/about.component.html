@@ -1,13 +1,31 @@
 <div [@fadeIn]="visible ? '*' : 'void'" id="about-block">
- <div class="text-about-me">
-   <span class="text-white">
-Помимо технических навыков, я хорошо знаком с принципами дизайна UX/UI, что позволяет мне создавать удобные и интуитивно понятные интерфейсы. Я уделяю особое внимание оптимизации производительности, чтобы обеспечить быструю и стабильную работу приложений.<br>
-За время своей карьеры я участвовал в разработке множества проектов различного масштаба, включая государственные и коммерческие проекты. Этот опыт дал мне глубокое понимание разнообразных требований и особенностей разных индустрий, а также способность эффективно работать в команде и решать сложные задачи.
-   </span>
+  <div *ngFor="let item of experienceItems" class="experience-card regular-text">
 
-   <ul>
-     <li class="text-white" *ngFor="let skill of skills">{{ skill }}</li>
-   </ul>
- </div>
+
+    <div class=" text-gray experience-date-block">
+      {{item.period}}
+    </div>
+
+    <div class="experience-info-block">
+
+      <div class="experience-title-block">
+        <p class="subtitle text-white-tittle ">{{item.role}}</p>
+        <p class="text-blue-bold">{{item.grade}}</p>
+      </div>
+
+      <div class="experience-description-block text-gray-white">
+        {{item.description}}
+      </div>
+
+      <div class="instruments-block">
+        <div class="instrument">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 

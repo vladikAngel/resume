@@ -1,6 +1,11 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, Input, OnInit, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {IExperience} from "../../core/interfaces/about/experience.interface";
+import EventEmitter from "events";
+import {forkJoin} from "rxjs";
+import {MockDataService} from "../../core/services/mock/mock-data.service";
+import {ScrollService} from "../scroll.service";
 
 
 
@@ -26,18 +31,38 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit{
   visible = false;
-  skills: string[] = [
-    'Разработка с использованием HTML, CSS и JavaScript/TypeScript',
-    'Создание масштабируемых приложений на Angular',
-    'Оптимизация производительности веб-приложений',
-    'Дизайн и внедрение UX/UI решений',
-    'Работа с системами контроля версий, такими как Git',
-    'Взаимодействие с RESTful API и интеграция с backend системами'
-  ];
+  experienceItems: Array<IExperience> = [];
+  currentLanguage: string | undefined;
 
 
+constructor(private dataService: MockDataService,
+            private scrollService: ScrollService) {
+}
+
+
+ ngOnInit() {
+  this.getData()
+
+ }
+
+  getData(): void {
+    this.scrollService.getLanguageUpdate().subscribe(language => {
+      this.currentLanguage = language;
+      this.dataService.getExperience(this.currentLanguage).subscribe(experience => {
+        this.experienceItems = experience;
+      });
+    });
+  }
+
+  // getData(): void {
+  //   forkJoin([this.dataService.getExperience()
+  //   ]).subscribe(x => {
+  //     this.experienceItems = x[0];
+  //     console.log(this.experienceItems)
+  //   })
+  // }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

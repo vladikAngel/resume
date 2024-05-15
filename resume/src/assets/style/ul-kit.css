@@ -1,43 +1,57 @@
-h1{
+h1 {
   color: #ededed;
   font-size: 48px;
-  transition: font-size 0.7s ease, padding 0.7s ease ,line-height 0.7s ease;
+  transition: font-size 0.7s ease, padding 0.7s ease, line-height 0.7s ease;
   line-height: 1.2;
   padding-bottom: 7px;
 }
-.text-blue-bold{
+
+.text-blue-bold {
   font-size: 30px;
   color: #00abf0;
   font-weight: 700;
   transition: font-size 0.7s ease, padding 0.7s ease, line-height 0.7s ease;
   line-height: 1.2;
 }
+.text-white-tittle{
+  color: #ededed;
+}
+.text-gray-white{
+  color: rgb(153, 168, 189);
+}
+
 .highlight {
-  color: #dd0031; /* Цвет текста для выделенного слова */
+  color: #dd0031;
   font-weight: 400;
-  text-align: center; /* Центрируем содержимое */
 }
 
 .highlight strong {
-  display: inline-block; /* Разрешаем элементу быть блочным, но сохраняем его на той же строке */
+  display: inline-block;
+}
+
+.text-gray {
+  color: rgb(148, 163, 184);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .highlight img.angular {
-  vertical-align: sub; /* Выравниваем изображение по вертикальному центру */
+  vertical-align: sub;
 }
-.text-white{
+
+.text-white {
   font-size: 22px;
   color: #ededed;
   font-weight: 400;
   line-height: 1.2;
-  /*transition: font-size 0.7s ease, padding 0.7s ease ,line-height 0.7s ease;*/
-  /*padding-top: 15px;*/
-
 }
-.angular{
+
+.angular {
   width: 25px;
 }
-.bth{
+
+.bth {
   background: #00abf0;
   border: 2px solid #00abf0;
   border-radius: 8px;
@@ -47,19 +61,22 @@ h1{
   padding: 14px 10px;
   font-weight: 600;
   letter-spacing: 1px;
-  transition:  0.7s ease;
+  transition: 0.7s ease;
 
 }
-.bth:hover{
+
+.bth:hover {
   background: transparent;
   color: #00abf0;
 }
-.bth:nth-child(2){
+
+.bth:nth-child(2) {
   background: transparent;
   color: #00abf0;
 
 }
-.bth:nth-child(2):hover{
-    background: #00abf0;
-    color: #081b29;
+
+.bth:nth-child(2):hover {
+  background: #00abf0;
+  color: #081b29;
 }
