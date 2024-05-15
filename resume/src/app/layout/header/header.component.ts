@@ -92,7 +92,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
   switchLanguage(language: string) {
     this.currentLanguage = language;
     this.scrollService.updateLanguage(language);
-    console.log(language)
     this.showSpinner()
   }
 

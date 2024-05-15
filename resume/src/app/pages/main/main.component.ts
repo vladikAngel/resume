@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PortfolioComponent} from "../portfolio/portfolio.component";
-import {ContactComponent} from "../contact/contact.component";
+
 import {AboutComponent} from "../about/about.component";
 import {HomeComponent} from "../home/home.component";
 import {Subscription} from "rxjs";
@@ -8,18 +8,19 @@ import {ScrollService} from "../scroll.service";
 import {NgForOf} from "@angular/common";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {HeaderComponent} from "../../layout/header/header.component";
+import {FooterComponent} from "../../layout/footer/footer.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-    imports: [
-        PortfolioComponent,
-        ContactComponent,
-        AboutComponent,
-        HomeComponent,
-        NgForOf,
-        HeaderComponent
-    ],
+  imports: [
+    PortfolioComponent,
+    AboutComponent,
+    HomeComponent,
+    NgForOf,
+    HeaderComponent,
+    FooterComponent
+  ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

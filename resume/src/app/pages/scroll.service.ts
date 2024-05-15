@@ -14,7 +14,7 @@ export class ScrollService {
       {  nameRu: 'Главная', nameEn: 'Home', customUrl: '/', blockId: 'home-block' },
       {  nameRu: 'Обо мне', nameEn: 'About', customUrl: '/', blockId: 'about-block' },
       {  nameRu: 'Проекты',nameEn: 'Project', customUrl: '/', blockId: 'portfolio-block' },
-      {  nameRu: 'Связь со мной',nameEn: 'Contact', customUrl: '/', blockId: 'contact-block' }
+      // {  nameRu: 'Связь со мной',nameEn: 'Contact', customUrl: '/', blockId: 'contact-block' }
     ];
   }
 
