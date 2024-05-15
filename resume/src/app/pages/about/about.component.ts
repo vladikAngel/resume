@@ -24,7 +24,7 @@ import {ScrollService} from "../scroll.service";
         opacity: 1
       })),
       transition('void => *', [
-        animate('1s ease-in')
+        animate('0.7s ease-in')
       ])
     ])
   ],
@@ -69,9 +69,8 @@ constructor(private dataService: MockDataService,
     const aboutBlock = document.getElementById('about-block');
     if (aboutBlock) {
       const rect = aboutBlock.getBoundingClientRect();
-      const topShown = rect.top >= 0;
-      const bottomShown = rect.bottom <= window.innerHeight;
-      if (topShown && bottomShown) {
+      const bottomShown = rect.bottom >= 0; // Проверяем, что хотя бы часть блока видна
+      if (bottomShown) {
         this.visible = true;
       }
     }

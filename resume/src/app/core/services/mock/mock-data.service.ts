@@ -40,6 +40,17 @@ export class MockDataService {
             'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
           instruments: ['']
         },
+        {
+          id: 1,
+          role: 'Angular Developer',
+          grade: 'Junior +',
+          period: 'May 2024 - PRESENT',
+          description: 'Leading a team of Angular developers, ensuring project goals are met and deadlines are adhered to.\n' +
+            'Making technical decisions and determining application architecture based on requirements and business needs.\n' +
+            'Participating in planning and task allocation within the team, ensuring an even workload and development of team members.\n' +
+            'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
+          instruments: ['']
+        },
       ];
     } else if (language === 'Ru') {
       experience = [
@@ -47,7 +58,7 @@ export class MockDataService {
           id: 0,
           role: 'Ангуляр Разработчик',
           grade: 'Стажер',
-          period: 'Сентябрь 2023 - Октябрь 2023',
+          period: 'Сент 2023 - Окт 2023',
           description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
             'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
             'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
@@ -58,11 +69,22 @@ export class MockDataService {
           id: 1,
           role: 'Angular Developer',
           grade: 'Джуниор',
-          period: 'Октябрь 2023 - Май 2024',
-          description: 'Leading a team of Angular developers, ensuring project goals are met and deadlines are adhered to.\n' +
-            'Making technical decisions and determining application architecture based on requirements and business needs.\n' +
-            'Participating in planning and task allocation within the team, ensuring an even workload and development of team members.\n' +
-            'Interacting with management and other departments to ensure effective project execution and achievement of business goals.',
+          period: 'Окт 2023 - Май 2024',
+          description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
+            'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
+            'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
+            'Взаимодействие с управлением и другими отделами для обеспечения эффективного выполнения проекта и достижения бизнес-целей.',
+          instruments: ['']
+        },
+        {
+          id: 2,
+          role: 'Angular Developer',
+          grade: 'Джуниор +',
+          period: 'Май 2024 - Сегодня',
+          description: 'Ведение команды разработчиков Angular, обеспечение достижения проектных целей и соблюдение сроков.\n' +
+            'Принятие технических решений и определение архитектуры приложения на основе требований и бизнес-потребностей.\n' +
+            'Участие в планировании и распределении задач в команде, обеспечение равномерной нагрузки и развития членов команды.\n' +
+            'Взаимодействие с управлением и другими отделами для обеспечения эффективного выполнения проекта и достижения бизнес-целей.',
           instruments: ['']
         },
       ];
