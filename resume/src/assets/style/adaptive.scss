@@ -1,31 +1,56 @@
 @media screen and (max-width: 768px) {
-  h1{
+  h1 {
     font-size: 30px;
     padding-bottom: 4px;
   }
-  .home-page-text{
-    padding-bottom: 7.5px!important;
+  .home-page-text {
+    padding-bottom: 7.5px !important;
   }
-  .home-page{
-    flex-direction: column!important;
+  .home-page {
+    flex-direction: column !important;
   }
-  .home-page-left{
-    gap: 1.5rem!important;
+  .home-page-left {
+    gap: 1.5rem !important;
   }
-  .bth{
-    font-size: 12px!important;
-    padding: 7px 5px!important;
+  .bth {
+    font-size: 12px !important;
+    padding: 7px 5px !important;
   }
-  .text-blue-bold{
+  .text-blue-bold {
     font-size: 22px;
   }
-  .text-white{
+  .text-white {
     font-size: 16px;
   }
-}
 
-@media screen and (max-width: 480px) {
-  .home-page{
-    flex-direction: column!important;
+  .nav-bar {
+    display: none !important;
+  }
+  .header {
+    justify-content: flex-end !important;
+  }
+  .experience-card {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .project-item {
+    .project-description {
+      .instruments {
+        display: flex!important;
+        gap: 1rem!important;
+        flex-wrap: wrap!important;
+      }
+    }
+    .text-white{
+      text-align: unset!important;
+    }
+  }
+  .footer{
+    .text-white {
+      margin-left: 20px!important;
+  }
+}
+  .scroll-dots{
+    right: 20px!important;
   }
 }

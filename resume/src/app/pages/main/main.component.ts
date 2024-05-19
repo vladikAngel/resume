@@ -8,6 +8,7 @@ import {NgForOf} from "@angular/common";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {HeaderComponent} from "../../layout/header/header.component";
 import {FooterComponent} from "../../layout/footer/footer.component";
+import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
 
 @Component({
   selector: 'app-main',
@@ -18,7 +19,8 @@ import {FooterComponent} from "../../layout/footer/footer.component";
     HomeComponent,
     NgForOf,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ScrollToTopDirective
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'

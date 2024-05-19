@@ -8,7 +8,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {TranslateModule} from "@ngx-translate/core";
 import {LoaderComponent} from "../../../assets/shared/components/loader/loader.component";
 import {NgxSpinnerService} from "ngx-spinner";
-
+import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
 
 
 @Component({
@@ -21,20 +21,21 @@ import {NgxSpinnerService} from "ngx-spinner";
     NgClass,
     NgIf,
     TranslateModule,
-    LoaderComponent
+    LoaderComponent,
+    ScrollToTopDirective
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   animations: [
     trigger('fadeInRight', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-100%)' }),
-        animate('1s ease', style({ opacity: 1, transform: 'translateX(0)' }))
+        style({opacity: 0, transform: 'translateX(-100%)'}),
+        animate('1s ease', style({opacity: 1, transform: 'translateX(0)'}))
       ])
     ])
   ]
 })
-export class HeaderComponent implements OnInit, OnDestroy{
+export class HeaderComponent implements OnInit, OnDestroy {
   navigateItems!: Array<NavigateInterface>;
   isDropdownOpen: boolean = false;
   activeBlockId: string = 'home-block';
@@ -42,22 +43,16 @@ export class HeaderComponent implements OnInit, OnDestroy{
   currentLanguage: string | undefined;
 
 
-
   constructor(private scrollService: ScrollService,
-              private spinner: NgxSpinnerService)
-  {}
+              private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
-   this.getHeaderItem()
+    this.getHeaderItem()
     this.getScrollSubscription()
-   this.getswitchLanguage()
-    // const storedLanguage = localStorage.getItem('selectedLanguage');
-    // if (!storedLanguage) {
-    //   this.switchLanguage('Ru');
-    // }
+    this.getswitchLanguage()
   }
 
-  showSpinner(){
+  showSpinner() {
     this.spinner.show();
 
     setTimeout(() => {
@@ -73,13 +68,13 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
     });
-
   }
 
-  getHeaderItem(){
+  getHeaderItem() {
     this.navigateItems = this.scrollService.getNavigateItems();
   }
-  getScrollSubscription(){
+
+  getScrollSubscription() {
     this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
       this.activeBlockId = blockId;
     });

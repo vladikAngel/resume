@@ -2,8 +2,7 @@ import {Component, HostListener, OnInit, } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IExperience} from "../../core/interfaces/about/experience.interface";
-
-import {MockDataService} from "../../core/services/mock-data.service";
+import {AboutService} from "../../core/services/about.service";
 import {ScrollService} from "../../core/services/scroll.service";
 
 
@@ -36,7 +35,7 @@ export class AboutComponent implements OnInit{
   currentLanguage: string | undefined;
 
 
-constructor(private dataService: MockDataService,
+constructor(private aboutService: AboutService,
             private scrollService: ScrollService) {
 }
 
@@ -49,7 +48,7 @@ constructor(private dataService: MockDataService,
   getData(): void {
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
-      this.dataService.getExperience(this.currentLanguage).subscribe(experience => {
+      this.aboutService.getExperience(this.currentLanguage).subscribe(experience => {
         this.experienceItems = experience;
       });
     });

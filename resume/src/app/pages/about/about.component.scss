@@ -3,24 +3,16 @@
   align-items: baseline;
   padding: 1rem;
   gap: 3rem;
-  cursor: pointer;
-  transition: background-color, opacity 0.3s ease;
-
   .experience-date-block {
     white-space: nowrap;
     font-size: .8rem;
   }
-
   .experience-info-block {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin: unset;
     max-width: 500px;
-
-    .experience-title-block {
-
-    }
   }
 
   &.active {
@@ -32,11 +24,9 @@
       color: rgb(94 234 212/var(--tw-text-opacity)) !important;
     }
   }
-
   &.opacity {
     opacity: 0.2;
   }
-
   .text-blue-bold {
     font-size: 14px;
     font-weight: 400;

@@ -1,5 +1,10 @@
 @import url('assets/style/style.css');
 
+
+.block-main{
+  background: #0c1020;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,8 +28,6 @@ p,span{
   width: 8px;
 
 }
-
-
 ::-webkit-scrollbar-thumb {
   background-color: #00abf0;
   border-radius: 6px;

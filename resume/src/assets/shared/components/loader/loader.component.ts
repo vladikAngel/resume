@@ -26,13 +26,10 @@ export class LoaderComponent implements OnInit {
     this.getSwitchLanguage()
   }
 
-  constructor(private spinner: NgxSpinnerService,
-  private scrollService: ScrollService,) {
-  }
+  constructor(private scrollService: ScrollService,) {}
 
   getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
-      // console.log(language)
       this.currentLanguage = language;
     });
   }

@@ -1,51 +1,13 @@
-
-  <div id="portfolio-block">
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p> <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p> <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
-    <p >portfolio works!</p>
+<div [@checkBlock]="visible ? '*' : 'void'" id="portfolio-block">
+  <div *ngFor="let item of workItems" class="project-item">
+    <div class="project-description ">
+      <p class="subtitle text-white">{{item.title}}</p>
+      <p class="text-gray-white regular-text">{{item.description}}</p>
+      <div class="instruments ">
+        <div *ngFor="let instrument of item.instruments" class="instrument rounded-5">
+          {{instrument}}
+        </div>
+      </div>
+    </div>
   </div>
-
-
+</div>

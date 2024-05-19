@@ -21,12 +21,6 @@ import {NgOptimizedImage} from "@angular/common";
         animate('2s ease', style({ opacity: 1 }))
       ])
     ]),
-    // trigger('animationBth', [
-    //   transition(':enter', [
-    //     style({ opacity: 0, transform: 'translateX(-50px)' }),
-    //     animate('0.5s ease', style({ opacity: 1, transform: 'translateX(0)' }))
-    //   ])
-    // ]),
     trigger('imageAnimation', [
       state('original', style({
         transform: 'scale(1)'

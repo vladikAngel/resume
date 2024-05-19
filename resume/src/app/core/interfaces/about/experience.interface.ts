@@ -1,7 +1,8 @@
-import {DataInterface} from "./data.interface";
 
-export interface IExperience extends DataInterface {
+export interface IExperience {
   role: string,
   grade: string,
   period: string,
+  id: number,
+  description: string,
 }
