@@ -22,9 +22,12 @@ export class ScrollService implements OnInit{
     this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setupScrollListener();
+  }
 
   scroll(blockId: string) {
+    this.scrollToBlock(blockId);
     this.scrollBehaviorSubject.next(blockId);
   }
 
@@ -39,6 +42,31 @@ export class ScrollService implements OnInit{
 
   }
 
+  scrollToBlock(blockId: string) {
+    const block = document.getElementById(blockId);
+    if (block) {
+      block.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  setupScrollListener() {
+    window.addEventListener('scroll', () => {
+      const scrollableBlocks = ['home-block', 'about-block', 'portfolio-block']; // Замените на ваши ID блоков
+      const windowHeight = window.innerHeight;
+
+      for (const blockId of scrollableBlocks) {
+        const block = document.getElementById(blockId);
+        if (block) {
+          const blockTop = block.getBoundingClientRect().top;
+          const blockBottom = block.getBoundingClientRect().bottom;
+
+          if (blockTop < windowHeight / 2 && blockBottom > windowHeight / 2) {
+            this.scroll(blockId);
+            break; // Остановить цикл после первого показанного блока
+          }
+        }
+      }
+    });
+  }
 
 
   getLanguageUpdate() {
