@@ -18,8 +18,18 @@ export class ScrollService implements OnInit{
   }
 
   constructor() {
-    const storedLanguage = localStorage.getItem('selectedLanguage') || 'Ru';
-    this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
+    // const storedLanguage = localStorage.getItem('selectedLanguage') || 'Ru';
+    // this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.getItem('selectedLanguage');
+    } else if (typeof sessionStorage !== 'undefined') {
+      // Fallback to sessionStorage if localStorage is not supported
+      sessionStorage.getItem('selectedLanguage');
+    } else {
+      // If neither localStorage nor sessionStorage is supported
+      console.log('Web Storage is not supported in this environment.');
+    }
   }
 
   ngOnInit() {

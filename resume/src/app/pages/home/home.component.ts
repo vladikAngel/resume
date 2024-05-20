@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {ScrollService} from "../../core/services/scroll.service";
 import {animate, AnimationBuilder, state, style, transition, trigger} from "@angular/animations";
@@ -34,7 +34,7 @@ import {NgOptimizedImage} from "@angular/common";
     ])
   ]
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit , AfterViewInit{
   currentState = 'original'
   currentLanguage: string | undefined;
   AboutMeText = {
@@ -56,13 +56,15 @@ export class HomeComponent implements OnInit{
 
 
 
-  constructor(private scrollService: ScrollService,private animationBuilder: AnimationBuilder,) {}
+  constructor(private scrollService: ScrollService,private animationBuilder: AnimationBuilder,private renderer: Renderer2) {}
 
   ngOnInit() {
-     this.startAnimation();
+     // this.startAnimation();
      this.getSwitchLanguage()
   }
-
+  ngAfterViewInit() {
+    this.startAnimation();
+  }
   getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
       this.currentLanguage = language;
@@ -70,16 +72,22 @@ export class HomeComponent implements OnInit{
   }
 
   startAnimation() {
-    const factory = this.animationBuilder.build([
-      style({ transform: 'scale(1)' }),
-      animate('2.3s', style({ transform: 'scale(0.85)' })),
-      animate('2.3s', style({ transform: 'scale(1)' }))
-    ]);
-    const player = factory.create(document.querySelector('.home-page-image'));
-    player.onDone(() => {
-      this.startAnimation();
-    });
-    player.play();
-  }
+    if (typeof document !== 'undefined') {
+      const factory = this.animationBuilder.build([
+        style({ transform: 'scale(1)' }),
+        animate('2.3s', style({ transform: 'scale(0.85)' })),
+        animate('2.3s', style({ transform: 'scale(1)' }))
+      ]);
 
+      const element = this.renderer.selectRootElement('.home-page-image', true);
+
+      if (element) {
+        const player = factory.create(element);
+        player.onDone(() => {
+          this.startAnimation();
+        });
+        player.play();
+      }
+    }
+  }
 }
