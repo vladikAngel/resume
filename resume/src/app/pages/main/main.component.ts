@@ -25,59 +25,48 @@ import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent implements OnInit,OnDestroy {
-  navigateItems!: Array<NavigateInterface>;
-  activeBlockId: string | null = 'home-block' ;
-  private scrollSubscription!: Subscription;
-
+export class MainComponent implements OnInit {
+  navigateItems: Array<NavigateInterface> | undefined;
+  activeBlockId: string  | undefined ;
+  currentLanguage: string | undefined;
   constructor(private scrollService: ScrollService) {}
 
   ngOnInit() {
     this.getHeaderItem()
+    this.getswitchLanguage()
     this.getScrollSubscription()
   }
-  ngOnDestroy() {
-    if (this.scrollSubscription){
-      this.scrollSubscription.unsubscribe();
-    }
-  }
+
 
   getHeaderItem(){
     this.navigateItems = this.scrollService.getNavigateItems();
   }
 
   getScrollSubscription(){
-    this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
-      if (this.scrollSubscription){
-        const block = document.getElementById(blockId);
-        if (block) {
-          block.scrollIntoView({ behavior: 'smooth' });
-        }
+    this.scrollService.getScrollSubject().pipe().subscribe(blockId => {
         this.activeBlockId = blockId;
-      }
     });
   }
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-    // Определение текущего блока, который виден в области просмотра
-    const windowHeight = window.innerHeight;
-    let currentBlockId = null;
-    for (const item of this.navigateItems) {
-      const block = document.getElementById(item.blockId);
-      if (block) {
-        const blockTop = block.getBoundingClientRect().top;
-        const blockBottom = block.getBoundingClientRect().bottom;
-
-        if (blockTop < windowHeight && blockBottom > 0) {
-          currentBlockId = item.blockId;
-          break;
-        }
+  onScroll() {
+     window.innerHeight;
+    if (this.navigateItems !== undefined){
+      for (const item of this.navigateItems) {
+          if (document.getElementById(item.blockId)!.getBoundingClientRect().top < window.innerHeight &&
+            document.getElementById(item.blockId)!.getBoundingClientRect().bottom > 0) {
+            this.activeBlockId = item.blockId;
+            break;
+          }
       }
     }
-    // Обновление активной точки на основе текущего блока
-    this.activeBlockId = currentBlockId;
+
   }
   scrollToBlock(blockId: string) {
     this.scrollService.scroll(blockId);
+  }
+  getswitchLanguage() {
+    this.scrollService.getLanguageUpdate().subscribe(language => {
+      this.currentLanguage = language;
+    });
   }
 }

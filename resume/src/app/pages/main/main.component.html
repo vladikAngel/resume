@@ -1,28 +1,32 @@
 
+<div class="container-nav">
+  <div class="main">
+    <div class="scroll-dots">
+      <div *ngFor="let item of navigateItems"
+           (click)="scrollToBlock(item.blockId)"
+           [class.active]="activeBlockId === item.blockId"
+           class="scroll-dot">
+        <span class="item"> {{currentLanguage === 'Ru' ? item.nameRu : item.nameEn}}</span>
+      </div>
 
-<div  class="wrapper">
-  <app-header></app-header>
-  <div class="scroll-page">
-    <app-home></app-home>
-    <app-about></app-about>
-    <app-portfolio></app-portfolio>
+    </div>
   </div>
-  <app-footer></app-footer>
+  <div  class="wrapper">
+    <app-header></app-header>
+    <div class="scroll-page">
+      <app-home></app-home>
+      <app-about></app-about>
+      <app-portfolio></app-portfolio>
+    </div>
+    <app-footer></app-footer>
+  </div>
 </div>
+
 
 
 
 <!--скрол страницы-->
 
-<div class="main">
-  <div class="scroll-dots">
-    <div *ngFor="let item of navigateItems"
-         (click)="scrollToBlock(item.blockId)"
-         [class.active]="activeBlockId === item.blockId"
-         class="scroll-dot">
-    </div>
-  </div>
-</div>
 
 
 <!-- конец скрола страницы-->

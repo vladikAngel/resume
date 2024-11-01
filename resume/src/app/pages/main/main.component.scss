@@ -1,21 +1,26 @@
 .scroll-dots {
   position: fixed;
-  right: 50px;
-  top: 50%; /* Вертикальное положение точек по центру */
+  top: 50%;
   transform: translateY(-50%);
-  z-index: 1000; /* Передний план */
+  left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  align-items: flex-start;
+  gap: 30px;
 }
 
 .scroll-dot {
-  width: 9px;
-  height: 9px;
+  width: 25px;
+  height: 2px;
   background-color: #ededed;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 .scroll-dot.active{
     background-color: #00abf0;
+  width: 45px;
 }
 
 .scroll-dot:hover {

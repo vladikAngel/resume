@@ -35,11 +35,10 @@ import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
     ])
   ]
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   navigateItems!: Array<NavigateInterface>;
   isDropdownOpen: boolean = false;
   activeBlockId: string = 'home-block';
-  private scrollSubscription!: Subscription;
   currentLanguage: string | undefined;
 
 
@@ -60,9 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }, 500);
   }
 
-  ngOnDestroy() {
-    this.scrollSubscription.unsubscribe();
-  }
+
 
   getswitchLanguage() {
     this.scrollService.getLanguageUpdate().subscribe(language => {
@@ -75,13 +72,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getScrollSubscription() {
-    this.scrollSubscription = this.scrollService.getScrollSubject().subscribe(blockId => {
+   this.scrollService.scrollBehaviorSubject.subscribe(blockId => {
       this.activeBlockId = blockId;
     });
-  }
-
-  scrollToBlock(blockId: string) {
-    this.scrollService.scroll(blockId);
   }
 
   switchLanguage(language: string) {
@@ -90,9 +83,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.showSpinner()
   }
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
 
-  }
 
 }

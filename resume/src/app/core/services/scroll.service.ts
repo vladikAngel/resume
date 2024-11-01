@@ -6,14 +6,14 @@ import {NavigateInterface} from "../interfaces/home/navigate.interface";
   providedIn: 'root'
 })
 export class ScrollService implements OnInit{
-  private scrollBehaviorSubject = new BehaviorSubject<string>('home-block');
+   scrollBehaviorSubject = new BehaviorSubject<string>('home-block');
   public languageBehaviorSubject = new BehaviorSubject<string>('Ru');
 
   getNavigateItems(): Array<NavigateInterface>{
     return [
-      {  nameRu: 'Главная', nameEn: 'Home', customUrl: '/', blockId: 'home-block' },
-      {  nameRu: 'Обо мне', nameEn: 'About', customUrl: '/', blockId: 'about-block' },
-      {  nameRu: 'Проекты',nameEn: 'Project', customUrl: '/', blockId: 'portfolio-block' },
+      {  nameRu: 'главная', nameEn: 'home', customUrl: '/', blockId: 'home-block' },
+      {  nameRu: 'обо мне', nameEn: 'about', customUrl: '/', blockId: 'about-block' },
+      {  nameRu: 'проекты',nameEn: 'project', customUrl: '/', blockId: 'portfolio-block' },
     ];
   }
 
@@ -55,12 +55,13 @@ export class ScrollService implements OnInit{
   scrollToBlock(blockId: string) {
     const block = document.getElementById(blockId);
     if (block) {
+      console.log(block.id)
       block.scrollIntoView({ behavior: 'smooth' });
     }
   }
   setupScrollListener() {
     window.addEventListener('scroll', () => {
-      const scrollableBlocks = ['home-block', 'about-block', 'portfolio-block']; // Замените на ваши ID блоков
+      const scrollableBlocks = ['home-block', 'about-block', 'portfolio-block'];
       const windowHeight = window.innerHeight;
 
       for (const blockId of scrollableBlocks) {
@@ -71,7 +72,7 @@ export class ScrollService implements OnInit{
 
           if (blockTop < windowHeight / 2 && blockBottom > windowHeight / 2) {
             this.scroll(blockId);
-            break; // Остановить цикл после первого показанного блока
+            break;
           }
         }
       }

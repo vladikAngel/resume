@@ -16,17 +16,17 @@ import {NgIf} from "@angular/common";
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('1500ms', style({ opacity: 1 })),
+        animate('2000ms', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('1500ms', style({ opacity: 0 })),
+        animate('2000ms', style({ opacity: 0 })),
       ]),
     ]),
   ],
 })
 export class WelcomeComponent implements OnInit {
   showAnim: boolean = true;
-  mainText: string = 'Welcome to my portfolio';
+  mainText: string = 'Angular Developer';
   constructor(private router: Router) {
   }
 

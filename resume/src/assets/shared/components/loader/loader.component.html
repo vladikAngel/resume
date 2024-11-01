@@ -1,8 +1,7 @@
-<ngx-spinner
-  bdColor="rgba(0,0,0,0.8)"
-  size="large"
-  color="#00abf0"
-  type="ball-scale-multiple"
->
-  <p style="color: white" > {{ currentLanguage === 'En' ? loadingLoader.En.loading : loadingLoader.Ru.loading }}... </p>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)"
+               size = "medium"
+               color = "#e60000"
+               type = "square-jelly-box"
+               [fullScreen] = "true">
+    <p style="color: white" > {{ currentLanguage === 'En' ? loadingLoader.En.loading : loadingLoader.Ru.loading }}...</p>
 </ngx-spinner>

@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
 import {ScrollService} from "../../../../app/core/services/scroll.service";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-loader',
   standalone: true,
   imports: [
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgIf
   ],
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.scss'

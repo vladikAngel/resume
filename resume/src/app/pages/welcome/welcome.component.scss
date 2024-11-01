@@ -16,13 +16,14 @@
 .text-container h1{
   margin: 0;
   font-size: 100px;
-  color: rgba(240, 200, 230, .01);
-  background-image: url("https://catherineasquithgallery.com/uploads/posts/2021-02/1613307382_24-p-sinii-kiber-fon-31.jpg");
+  color: rgba(255, 255, 255, 0.2);
+  background-image: url("/assets/images/cyber-bgc.jpg");
   background-repeat: repeat;
   -webkit-background-clip:text;
   animation: animate 30s ease-in-out infinite;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   font-weight: 900;
 }
 
