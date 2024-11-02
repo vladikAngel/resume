@@ -1,10 +1,22 @@
 @import url('assets/style/style.css');
 
+html{
+  background: linear-gradient(135deg, #1a1b2e, #22233b, #1a1b2e, #252738);
+  background-size: 300% 300%;
+  animation: waveEffect 15s ease-in-out infinite;
 
-.block-main{
-  background: #0c1020;
 }
-
+@keyframes waveEffect {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -17,14 +29,10 @@ h1,h2,h3,h4,h5,h6{
 p,span{
   margin: unset;
 }
-.container-nav{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width:1500px;
+.wrapper{
+  max-width:1200px;
   margin:0 auto;
   padding: 0 15px;
-  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -65,7 +73,7 @@ p,span{
 }
 
 .scroll-dot.active .item {
-  font-weight: bold; /* Пример для выделения активного текста */
+  font-weight: bold;
 }
 .typed-cursor {
   font-weight: bold!important;

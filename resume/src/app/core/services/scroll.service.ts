@@ -11,9 +11,9 @@ export class ScrollService implements OnInit{
 
   getNavigateItems(): Array<NavigateInterface>{
     return [
-      {  nameRu: 'главная', nameEn: 'home', customUrl: '/', blockId: 'home-block' },
-      {  nameRu: 'обо мне', nameEn: 'about', customUrl: '/', blockId: 'about-block' },
-      {  nameRu: 'проекты',nameEn: 'project', customUrl: '/', blockId: 'portfolio-block' },
+      {  nameRu: 'Главная', nameEn: 'Home', customUrl: '/', blockId: 'home-block' },
+      {  nameRu: 'Обо мне', nameEn: 'About', customUrl: '/', blockId: 'about-block' },
+      {  nameRu: 'Проекты',nameEn: 'Project', customUrl: '/', blockId: 'portfolio-block' },
     ];
   }
 
@@ -29,21 +29,16 @@ export class ScrollService implements OnInit{
 
   ngOnInit() {
     this.setupScrollListener();
+
   }
   scroll(blockId: string) {
     this.scrollToBlock(blockId);
     this.scrollBehaviorSubject.next(blockId);
   }
 
-  getScrollSubject() {
-    return this.scrollBehaviorSubject.asObservable();
-  }
-
-  // Метод для отправки информации о смене языка
   updateLanguage(language: string) {
     this.languageBehaviorSubject.next(language);
     localStorage.setItem('selectedLanguage', language);
-
   }
 
   scrollToBlock(blockId: string) {

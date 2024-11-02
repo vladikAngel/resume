@@ -34,8 +34,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.getHeaderItem()
-    this.getswitchLanguage()
-    this.getScrollSubscription()
+    this.getSwitchLanguage()
+    this.scrollToBlock('home-block')
   }
 
 
@@ -43,11 +43,7 @@ export class MainComponent implements OnInit {
     this.navigateItems = this.scrollService.getNavigateItems();
   }
 
-  getScrollSubscription(){
-    this.scrollService.getScrollSubject().pipe(untilDestroyed(this)).subscribe(blockId => {
-        this.activeBlockId = blockId;
-    });
-  }
+
   @HostListener('window:scroll', ['$event'])
   onScroll() {
      window.innerHeight;
@@ -62,12 +58,14 @@ export class MainComponent implements OnInit {
     }
 
   }
-  scrollToBlock(blockId: string) {
-    this.scrollService.scroll(blockId);
-  }
-  getswitchLanguage() {
+
+  getSwitchLanguage() {
     this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
     });
+  }
+
+  scrollToBlock(blockId: string) {
+    this.scrollService.scroll(blockId);
   }
 }

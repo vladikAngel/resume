@@ -2,6 +2,7 @@ h1 {
   color: #ededed;
   font-size: 38px;
   transition: font-size 0.7s ease, padding 0.3s ease, line-height 0.7s ease;
+  margin: unset!important;
   padding-bottom: 7px;
 }
 
@@ -9,8 +10,7 @@ h1 {
   font-size: 24px;
   color: #00abf0;
   font-weight: 500;
-  transition: font-size 0.7s ease, padding 0.7s ease, line-height 0.7s ease;
-
+  margin: unset!important;
 }
 .text-white-tittle{
   color: #ededed;

@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.getHeaderItem()
-    this.getScrollSubscription()
+
     this.getswitchLanguage()
   }
 
@@ -71,11 +71,7 @@ export class HeaderComponent implements OnInit {
     this.navigateItems = this.scrollService.getNavigateItems();
   }
 
-  getScrollSubscription() {
-   this.scrollService.scrollBehaviorSubject.pipe(untilDestroyed(this)).subscribe(blockId => {
-      this.activeBlockId = blockId;
-    });
-  }
+
 
   switchLanguage(language: string) {
     this.currentLanguage = language;

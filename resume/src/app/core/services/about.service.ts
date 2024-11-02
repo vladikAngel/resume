@@ -36,7 +36,7 @@ export class AboutService {
         },
         {
           id: 1,
-          role: 'Ангуляр Разработчик',
+          role: 'Angular Developer',
           grade: 'Junior +',
           period: 'May 2024 - PRESENT',
           description: 'Developing and maintaining user interfaces using Angular. Creating modular and reusable components.\n ' +
