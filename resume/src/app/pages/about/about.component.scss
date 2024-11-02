@@ -1,14 +1,29 @@
 .experience-card {
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
   padding: 1rem;
   gap: 3rem;
+  opacity: 1;
+  transition: opacity 0.3s ease, border 0.1s ease;
+
+  &:hover {
+    outline: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow:
+      0px -2px 5px rgba(94, 234, 212, 0.4),
+      0px 8px 15px rgba(94, 234, 212, 0.4);
+  }
+  &.inactive {
+    opacity: 0.3!important;
+  }
+
   .experience-date-block {
     white-space: nowrap;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
+
   .experience-info-block {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: 0.5rem;
     margin: unset;
@@ -20,18 +35,18 @@
     border-radius: 0.5rem;
 
     .experience-info-block .experience-title-block .subtitle {
-      --tw-text-opacity: 1;
-      color: rgb(94 234 212/var(--tw-text-opacity)) !important;
+      color: rgb(94, 234, 212) !important;
     }
   }
-  &.opacity {
-    opacity: 0.2;
-  }
+
   .text-blue-bold {
     font-size: 14px;
     font-weight: 400;
-    transition: unset!important;
-    line-height: unset!important;
   }
 }
 
+.block-card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4rem;
+}

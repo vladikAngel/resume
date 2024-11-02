@@ -3,14 +3,19 @@ import {RouterLink} from "@angular/router";
 import {ScrollService} from "../../core/services/scroll.service";
 import {animate, AnimationBuilder, state, style, transition, trigger} from "@angular/animations";
 import {NgOptimizedImage} from "@angular/common";
+import {
+  AnimationTextComponent
+} from "../../../assets/shared/components/animation-text/animation-text/animation-text.component";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     RouterLink,
-    NgOptimizedImage
+    NgOptimizedImage,
+    AnimationTextComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -39,15 +44,15 @@ export class HomeComponent implements OnInit , AfterViewInit{
   currentLanguage: string | undefined;
   AboutMeText = {
     Ru: {
-      greeting: "Привет, я Корпан Владислав",
-      profession: "Frontend Разработчик",
+      greeting: "Привет,я Корпан Владислав",
+      profession: "И я являюсь ",
       description: "Я опытный frontend разработчик, владеющий созданием высококачественных веб-приложений с использованием HTML, CSS и JavaScript/TypeScript. В своей работе я использую современные технологии и инструменты для создания динамичных и отзывчивых пользовательских интерфейсов на",
       more: "Больше информации",
       contact: "Связь со мной",
     },
    En: {
-      greeting: "Hi, I'm Korpan Vladislav",
-      profession: "Frontend Developer",
+      greeting: "Hi, It's Korpan Vladislav",
+      profession: "I a'm a ",
       description: "I am an experienced frontend developer skilled in creating high-quality web applications using HTML, CSS, and JavaScript/TypeScript. In my work, I utilize modern technologies and tools to build dynamic and responsive user interfaces with",
       more: "More details",
       contact: "Contact me",
@@ -59,14 +64,13 @@ export class HomeComponent implements OnInit , AfterViewInit{
   constructor(private scrollService: ScrollService,private animationBuilder: AnimationBuilder,private renderer: Renderer2) {}
 
   ngOnInit() {
-     // this.startAnimation();
      this.getSwitchLanguage()
   }
   ngAfterViewInit() {
     this.startAnimation();
   }
   getSwitchLanguage() {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
+    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
     });
   }

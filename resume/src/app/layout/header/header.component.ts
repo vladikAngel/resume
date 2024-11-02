@@ -1,16 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {ScrollService} from "../../core/services/scroll.service";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
-import {Subscription} from "rxjs";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {TranslateModule} from "@ngx-translate/core";
 import {LoaderComponent} from "../../../assets/shared/components/loader/loader.component";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
 
 
   getswitchLanguage() {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
+    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
     });
   }
@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getScrollSubscription() {
-   this.scrollService.scrollBehaviorSubject.subscribe(blockId => {
+   this.scrollService.scrollBehaviorSubject.pipe(untilDestroyed(this)).subscribe(blockId => {
       this.activeBlockId = blockId;
     });
   }
@@ -82,7 +82,4 @@ export class HeaderComponent implements OnInit {
     this.scrollService.updateLanguage(language);
     this.showSpinner()
   }
-
-
-
 }

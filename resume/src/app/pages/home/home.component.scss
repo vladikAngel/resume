@@ -1,55 +1,69 @@
 
-.home{
- margin-top: 6em;
+.home {
   display: flex;
   flex-direction: column;
 
 }
+
 h1:hover {
   //font-size: 40px;
   //padding-bottom: 0;
 }
-.text-white:hover{
+
+.text-white:hover {
   //font-size: 24px;
   //padding-bottom: 0;
   //padding-top: 10px;
 }
-.home-page-text{
+
+.home-page-text {
+  display: flex;
+  gap: 10px;
   padding-bottom: 15px;
 
-.text-blue-bold:hover{
-  font-size: 26px;
+  .text-blue-bold:hover {
+    font-size: 26px;
+  }
 }
-}
-.home-page-text:hover{
+
+.home-page-text:hover {
   //padding-top: 10px;
   //padding-bottom: 26px;
 }
-.home-page{
+
+.home-page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.home-page-left{
+
+.home-page-left {
   display: flex;
   flex-direction: column;
   max-width: 780px;
   gap: 0.5rem;
 }
 
-.home-page-button{
+.home-page-button {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.main-image{
+
+.main-image {
   max-width: 370px;
 }
-.home-page-button:hover{
+
+.home-page-button:hover {
   padding-top: 0;
 }
-.bth img{
+
+.bth img {
   vertical-align: middle;
   width: 15px;
 }
+
+
+
+

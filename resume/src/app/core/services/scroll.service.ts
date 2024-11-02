@@ -7,7 +7,7 @@ import {NavigateInterface} from "../interfaces/home/navigate.interface";
 })
 export class ScrollService implements OnInit{
    scrollBehaviorSubject = new BehaviorSubject<string>('home-block');
-  public languageBehaviorSubject = new BehaviorSubject<string>('Ru');
+   languageBehaviorSubject: BehaviorSubject<string>
 
   getNavigateItems(): Array<NavigateInterface>{
     return [
@@ -18,24 +18,18 @@ export class ScrollService implements OnInit{
   }
 
   constructor() {
-    // const storedLanguage = localStorage.getItem('selectedLanguage') || 'Ru';
-    // this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
-
-    if (typeof localStorage !== 'undefined') {
-      localStorage.getItem('selectedLanguage');
-    } else if (typeof sessionStorage !== 'undefined') {
-      // Fallback to sessionStorage if localStorage is not supported
-      sessionStorage.getItem('selectedLanguage');
-    } else {
-      // If neither localStorage nor sessionStorage is supported
-      console.log('Web Storage is not supported in this environment.');
+    let storedLanguage = ''; // дефолтное значение
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('selectedLanguage')) {
+       storedLanguage = localStorage.getItem('selectedLanguage')!;
+    } else if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('selectedLanguage')) {
+      storedLanguage = sessionStorage.getItem('selectedLanguage')!;
     }
+    this.languageBehaviorSubject = new BehaviorSubject<string>(storedLanguage);
   }
 
   ngOnInit() {
     this.setupScrollListener();
   }
-
   scroll(blockId: string) {
     this.scrollToBlock(blockId);
     this.scrollBehaviorSubject.next(blockId);
@@ -55,7 +49,6 @@ export class ScrollService implements OnInit{
   scrollToBlock(blockId: string) {
     const block = document.getElementById(blockId);
     if (block) {
-      console.log(block.id)
       block.scrollIntoView({ behavior: 'smooth' });
     }
   }

@@ -1,31 +1,27 @@
-<div [@fadeIn]="visible ? '*' : 'void'" id="about-block">
-  <div *ngFor="let item of experienceItems" class="experience-card regular-text">
-
-
-    <div class=" text-gray experience-date-block">
-      {{item.period}}
-    </div>
+<div id="about-block" class="block-card">
+  <div
+    *ngFor="let item of experienceItems"
+    class="experience-card"
+    [ngClass]="{ inactive: activeItem && activeItem !== item }"
+    [@fadeIn]="item.visible ? '*' : 'void'"
+    (mouseenter)="activeItem = item"
+    (mouseleave)="activeItem = null"
+  >
+    <div class="text-gray experience-date-block">{{ item.period }}</div>
 
     <div class="experience-info-block">
-
       <div class="experience-title-block">
-        <p class="subtitle text-white-tittle ">{{item.role}}</p>
-        <p class="text-blue-bold">{{item.grade}}</p>
+        <p class="subtitle text-white-tittle">{{ item.role }}</p>
+        <p class="text-blue-bold">{{ item.grade }}</p>
       </div>
 
       <div class="experience-description-block text-gray-white">
-        {{item.description}}
+        {{ item.description }}
       </div>
 
       <div class="instruments-block">
-        <div class="instrument">
-
-        </div>
+        <div class="instrument"></div>
       </div>
-
     </div>
-
   </div>
-
 </div>
-

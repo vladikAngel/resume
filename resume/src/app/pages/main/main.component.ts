@@ -1,15 +1,16 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {PortfolioComponent} from "../portfolio/portfolio.component";
 import {AboutComponent} from "../about/about.component";
 import {HomeComponent} from "../home/home.component";
-import {Subscription} from "rxjs";
 import {ScrollService} from "../../core/services/scroll.service";
 import {NgForOf} from "@angular/common";
 import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
 import {HeaderComponent} from "../../layout/header/header.component";
 import {FooterComponent} from "../../layout/footer/footer.component";
 import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
+@UntilDestroy()
 @Component({
   selector: 'app-main',
   standalone: true,
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit {
   }
 
   getScrollSubscription(){
-    this.scrollService.getScrollSubject().pipe().subscribe(blockId => {
+    this.scrollService.getScrollSubject().pipe(untilDestroyed(this)).subscribe(blockId => {
         this.activeBlockId = blockId;
     });
   }
@@ -65,7 +66,7 @@ export class MainComponent implements OnInit {
     this.scrollService.scroll(blockId);
   }
   getswitchLanguage() {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
+    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
     });
   }

@@ -1,31 +1,27 @@
-
-  <div  class="home">
-    <div class="home-page">
-      <div  class="home-page-left" >
-        <div class="animation" [@fadeInFromSides]>
-          <div class="home-page-title">
-            <h1>{{ currentLanguage === 'En' ? AboutMeText.En.greeting : AboutMeText.Ru.greeting}}</h1>
-          </div>
-          <div class="home-page-text">
-            <span class="text-blue-bold">
-              {{ currentLanguage === 'En' ? AboutMeText.En.profession : AboutMeText.Ru.profession }}
-            </span>
-          </div>
-          <div class="home-page-text">
-            <span class="text-white">
-              {{ currentLanguage === 'En' ? AboutMeText.En.description : AboutMeText.Ru.description}}
-              <strong class="highlight">
-                 Angular<img class="angular" src="assets/images/Angular_gradient.png"></strong>.</span>
-          </div>
+<div class="home">
+  <div class="home-page">
+    <div class="home-page-left">
+      <div class="animation" [@fadeInFromSides]>
+        <div class="home-page-title">
+          <h1>{{ currentLanguage === 'En' ? AboutMeText.En.greeting : AboutMeText.Ru.greeting }}</h1>
         </div>
-      </div>
-      <div [@imageAnimation]="currentState" class="home-page-right">
-        <div class="home-page-image">
-          <img class="main-image"  src="assets/images/frontend.png">
+        <div class="home-page-text">
+        <span class="text-blue-bold">{{currentLanguage === 'En' ? AboutMeText.En.profession : AboutMeText.Ru.profession }} </span> <app-animation-text></app-animation-text>
+        </div>
+        <div class="home-page-text">
+          <span class="text-white">
+            {{ currentLanguage === 'En' ? AboutMeText.En.description : AboutMeText.Ru.description }}
+            <strong class="highlight">
+              Angular <img class="angular" src="assets/images/Angular_gradient.png" />
+            </strong>.
+          </span>
         </div>
       </div>
     </div>
+    <div [@imageAnimation]="currentState" class="home-page-right">
+      <div class="home-page-image">
+        <img class="main-image" src="assets/images/frontend.png" />
+      </div>
+    </div>
   </div>
-
-
-
+</div>

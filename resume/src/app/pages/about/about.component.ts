@@ -1,76 +1,67 @@
 import {Component, HostListener, OnInit, } from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IExperience} from "../../core/interfaces/about/experience.interface";
 import {AboutService} from "../../core/services/about.service";
 import {ScrollService} from "../../core/services/scroll.service";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-about',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    NgClass
   ],
   animations: [
     trigger('fadeIn', [
-      state('void', style({
-        opacity: 0
-      })),
-      state('*', style({
-        opacity: 1
-      })),
-      transition('void => *', [
-        animate('0.7s ease-in')
-      ])
+      state('void', style({ opacity: 0 })),
+      state('*', style({ opacity: 1 })),
+      transition('void => *', [animate('0.7s ease-in')])
     ])
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent implements OnInit{
-  visible = false;
-  experienceItems: Array<IExperience> = [];
+export class AboutComponent implements OnInit {
+  experienceItems: Array<IExperience & { visible: boolean }> = [];
   currentLanguage: string | undefined;
+  activeItem: IExperience | null = null;
 
+  constructor(
+    private aboutService: AboutService,
+    private scrollService: ScrollService
+  ) {}
 
-constructor(private aboutService: AboutService,
-            private scrollService: ScrollService) {
-}
-
-
- ngOnInit() {
-  this.getData()
-
- }
+  ngOnInit() {
+    this.getData();
+  }
 
   getData(): void {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
+    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
-      this.aboutService.getExperience(this.currentLanguage).subscribe(experience => {
-        this.experienceItems = experience;
+      this.aboutService.getExperience(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
+        this.experienceItems = experience.map(item => ({ ...item, visible: false }));
       });
     });
   }
-
-  // getData(): void {
-  //   forkJoin([this.dataService.getExperience()
-  //   ]).subscribe(x => {
-  //     this.experienceItems = x[0];
-  //     console.log(this.experienceItems)
-  //   })
-  // }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const aboutBlock = document.getElementById('about-block');
     if (aboutBlock) {
-      const rect = aboutBlock.getBoundingClientRect();
-      const bottomShown = rect.bottom >= 0; // Проверяем, что хотя бы часть блока видна
-      if (bottomShown) {
-        this.visible = true;
-      }
+      this.experienceItems.forEach((item, index) => {
+        const element = aboutBlock.children[index] as HTMLElement;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+          if (isVisible) {
+            item.visible = true;
+          }
+        }
+      });
     }
   }
 }

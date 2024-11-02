@@ -6,8 +6,9 @@ import {IProject} from "../../core/interfaces/portfolio/projects.interface";
 import {NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {PortfolioService} from "../../core/services/portfolio.service";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-portfolio',
   standalone: true,
@@ -46,9 +47,9 @@ export class PortfolioComponent implements OnInit{
   }
 
   getProjects(): void {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
+    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
       this.currentLanguage = language;
-      this.projectService.getProjects(this.currentLanguage).subscribe(experience => {
+      this.projectService.getProjects(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
         this.workItems = experience;
       });
     });
