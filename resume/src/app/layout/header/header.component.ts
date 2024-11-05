@@ -59,7 +59,6 @@ export class HeaderComponent implements OnInit {
   }
   switchLanguage(language: string) {
     this.languageService.setSwitchLanguage(language);
-    this.languageService.getSwitchLanguage()
-    this.showSpinner()
+    // this.showSpinner()
   }
 }
