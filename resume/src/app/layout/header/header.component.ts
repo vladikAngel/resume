@@ -1,8 +1,7 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {ScrollService} from "../../core/services/scroll.service";
-import {NavigateInterface} from "../../core/interfaces/home/navigate.interface";
+
 import {animate, style, transition, trigger} from "@angular/animations";
 import {TranslateModule} from "@ngx-translate/core";
 import {LoaderComponent} from "../../../assets/shared/components/loader/loader.component";
@@ -37,9 +36,7 @@ import {LanguageService} from "../../core/services/language.service";
   ]
 })
 export class HeaderComponent implements OnInit {
-  navigateItems!: Array<NavigateInterface>;
   isDropdownOpen: boolean = false;
-  activeBlockId: string = 'home-block';
   currentLanguage: string | undefined;
 
 
@@ -49,22 +46,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.getSwitchLanguage()
   }
-
   showSpinner() {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
   }
-
-
-
   getSwitchLanguage() {
     this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
       this.currentLanguage = currentLanguage
     })
   }
-
   switchLanguage(language: string) {
     this.languageService.setSwitchLanguage(language);
     this.languageService.getSwitchLanguage()
