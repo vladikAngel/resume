@@ -1,5 +1,9 @@
-<div  [@checkBlock]="visible ? '*' : 'void'" id="portfolio-block">
-  <div *ngFor="let item of workItems" class="project-item">
+<div class="main-portfolio" [@checkBlock]="visible ? '*' : 'void'" id="portfolio-block">
+  <div *ngFor="let item of workItems"
+       [ngClass]="{ inactive: activeItem && activeItem !== item }"
+       (mouseenter)="activeItem = item"
+       (mouseleave)="activeItem = null"
+       class="project-item">
     <div class="project-description ">
       <p class="subtitle text-white">{{item.title}}</p>
       <p class="text-gray-white regular-text">{{item.description}}</p>

@@ -1,10 +1,11 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {IProject} from "../../core/interfaces/portfolio/projects.interface";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {PortfolioService} from "../../core/services/portfolio.service";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {LanguageService} from "../../core/services/language.service";
+
 
 @UntilDestroy()
 @Component({
@@ -12,7 +13,8 @@ import {LanguageService} from "../../core/services/language.service";
   standalone: true,
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    NgClass
   ],
   animations: [
     trigger('checkBlock', [
@@ -31,10 +33,10 @@ import {LanguageService} from "../../core/services/language.service";
   styleUrl: './portfolio.component.scss'
 })
 export class PortfolioComponent implements OnInit{
-  workItems: Array<IProject> = [];
+  workItems: Array<IProject & { visible: boolean }> = [];
   currentLanguage: string | undefined;
   visible = false;
-
+  activeItem: IProject | null = null;
   constructor(private languageService: LanguageService,
               private projectService: PortfolioService) {
   }
@@ -48,7 +50,7 @@ export class PortfolioComponent implements OnInit{
     this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
       this.currentLanguage = currentLanguage
       this.projectService.getProjects(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
-        this.workItems = experience;
+        this.workItems = experience.map(item => ({ ...item, visible: false }));
       });
     });
   }

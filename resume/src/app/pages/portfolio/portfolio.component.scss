@@ -1,3 +1,8 @@
+.main-portfolio{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 40px;
 .project-item {
   display: flex;
   flex-direction: row;
@@ -5,6 +10,14 @@
   gap: 1rem;
   justify-content: center;
   padding: 1rem;
+  transition: opacity 0.3s ease, border 0.1s ease;
+  &.inactive {
+    opacity: 0.3 !important;
+  }
+    &:hover{
+    border-radius: 12px;
+    box-shadow: 0px -2px 5px rgba(94, 234, 212, 0.4), 0px 8px 15px rgba(94, 234, 212, 0.4);
+  }
   .project-description {
     .instruments {
       display: flex;
@@ -16,7 +29,7 @@
         --tw-text-opacity: 1;
         padding: 0.25rem 0.75rem;
         background-color: rgba(45, 212, 191, .1);
-        color: #00abf0;
+        color: rgba(0, 255, 255, 0.8);
         border-radius: 25px;
       }
     }
@@ -50,5 +63,8 @@
     gap: 0.5rem;
     max-width: 1000px;
   }
-
+}
+}
+.instrument:hover{
+  outline: 2px solid rgba(255, 255, 255, 0.2);
 }

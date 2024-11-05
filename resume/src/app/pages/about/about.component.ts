@@ -3,7 +3,6 @@ import {NgClass, NgForOf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IExperience} from "../../core/interfaces/about/experience.interface";
 import {AboutService} from "../../core/services/about.service";
-import {ScrollService} from "../../core/services/scroll.service";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {LanguageService} from "../../core/services/language.service";
 
@@ -33,7 +32,6 @@ export class AboutComponent implements OnInit {
   constructor(
     private aboutService: AboutService,
     private languageService: LanguageService,
-    private scrollService: ScrollService
   ) {}
 
   ngOnInit() {

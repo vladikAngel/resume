@@ -19,10 +19,5 @@ export class LanguageService{
     this.languageSubject.next(language);
 
   }
-  getSwitchLanguage() {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem('selectedLanguage') ;
-    }
-    return
-  }
+
 }
