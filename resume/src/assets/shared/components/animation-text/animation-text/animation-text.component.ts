@@ -15,14 +15,14 @@ export class AnimationTextComponent implements OnInit, OnDestroy {
   private isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId); // Определяем окружение
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
     // Инициализируем только на клиенте
     if (this.isBrowser) {
       const options = {
-        strings: ["Web Designer", "UI/UX Designer", "Angular Developer"],
+        strings: ["Web Developer", "UI/UX Developer", "Angular Developer"],
         typeSpeed: 50,
         backSpeed: 25,
         backDelay: 2000,

@@ -8,7 +8,6 @@ import {IProject} from "../interfaces/portfolio/projects.interface";
 
 
 export class PortfolioService {
-
   getProjects(language: string = 'En'): Observable<Array<IProject>> {
     let projects: Array<IProject>;
 

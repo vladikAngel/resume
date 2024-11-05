@@ -1,16 +1,16 @@
 <div class="home">
   <div class="home-page">
     <div class="home-page-left">
-      <div class="animation" [@fadeInFromSides]>
+      <div *ngFor="let profile of AboutMeText" class="animation" [@fadeInFromSides]>
         <div class="home-page-title">
-          <h1>{{ currentLanguage === 'En' ? AboutMeText.En.greeting : AboutMeText.Ru.greeting }}</h1>
+          <h1>{{ profile.greeting }}</h1>
         </div>
         <div class="home-page-text">
-        <span class="text-blue-bold">{{currentLanguage === 'En' ? AboutMeText.En.profession : AboutMeText.Ru.profession }} </span> <app-animation-text></app-animation-text>
+        <span class="text-blue-bold">{{profile.profession }} </span> <app-animation-text></app-animation-text>
         </div>
         <div class="home-page-text">
           <span class="text-white">
-            {{ currentLanguage === 'En' ? AboutMeText.En.description : AboutMeText.Ru.description }}
+            {{profile.description}}
             <strong class="highlight">
               Angular <img class="angular" src="assets/images/Angular_gradient.png" />
             </strong>.

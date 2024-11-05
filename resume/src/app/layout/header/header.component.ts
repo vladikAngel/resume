@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {ScrollService} from "../../core/services/scroll.service";
@@ -9,6 +9,7 @@ import {LoaderComponent} from "../../../assets/shared/components/loader/loader.c
 import {NgxSpinnerService} from "ngx-spinner";
 import {ScrollToTopDirective} from "../../core/directive/scroll.directive";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {LanguageService} from "../../core/services/language.service";
 
 @UntilDestroy()
 @Component({
@@ -42,18 +43,15 @@ export class HeaderComponent implements OnInit {
   currentLanguage: string | undefined;
 
 
-  constructor(private scrollService: ScrollService,
+  constructor(private languageService: LanguageService,
               private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
-    this.getHeaderItem()
-
-    this.getswitchLanguage()
+    this.getSwitchLanguage()
   }
 
   showSpinner() {
     this.spinner.show();
-
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
@@ -61,21 +59,15 @@ export class HeaderComponent implements OnInit {
 
 
 
-  getswitchLanguage() {
-    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
-      this.currentLanguage = language;
-    });
+  getSwitchLanguage() {
+    this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
+      this.currentLanguage = currentLanguage
+    })
   }
-
-  getHeaderItem() {
-    this.navigateItems = this.scrollService.getNavigateItems();
-  }
-
-
 
   switchLanguage(language: string) {
-    this.currentLanguage = language;
-    this.scrollService.updateLanguage(language);
+    this.languageService.setSwitchLanguage(language);
+    this.languageService.getSwitchLanguage()
     this.showSpinner()
   }
 }

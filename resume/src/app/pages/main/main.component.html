@@ -9,20 +9,13 @@
   <app-footer></app-footer>
 </div>
 
-
-
-<!--скрол страницы-->
-
 <div class="main">
   <div class="scroll-dots">
-    <div *ngFor="let item of navigateItems"
+    <div *ngFor="let item of navService.getNavigateItems()"
          (click)="scrollToBlock(item.blockId)"
          [class.active]="activeBlockId === item.blockId"
          class="scroll-dot">
-      <span class="item"> {{ item.nameRu}}</span>
   </div>
 </div>
 </div>
 
-
-<!-- конец скрола страницы-->

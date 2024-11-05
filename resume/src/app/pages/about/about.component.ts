@@ -5,7 +5,7 @@ import {IExperience} from "../../core/interfaces/about/experience.interface";
 import {AboutService} from "../../core/services/about.service";
 import {ScrollService} from "../../core/services/scroll.service";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-
+import {LanguageService} from "../../core/services/language.service";
 
 @UntilDestroy()
 @Component({
@@ -32,6 +32,7 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private aboutService: AboutService,
+    private languageService: LanguageService,
     private scrollService: ScrollService
   ) {}
 
@@ -40,12 +41,12 @@ export class AboutComponent implements OnInit {
   }
 
   getData(): void {
-    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
-      this.currentLanguage = language;
-      this.aboutService.getExperience(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
-        this.experienceItems = experience.map(item => ({ ...item, visible: false }));
-      });
-    });
+    this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
+      this.currentLanguage = currentLanguage
+     this.aboutService.getExperience(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
+       this.experienceItems = experience.map(item => ({ ...item, visible: false }));
+     });
+   })
   }
 
   @HostListener('window:scroll', [])

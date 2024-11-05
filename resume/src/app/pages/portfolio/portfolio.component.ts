@@ -1,19 +1,18 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {AboutService} from "../../core/services/about.service";
-import {ScrollService} from "../../core/services/scroll.service";
-
 import {IProject} from "../../core/interfaces/portfolio/projects.interface";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {PortfolioService} from "../../core/services/portfolio.service";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {LanguageService} from "../../core/services/language.service";
 
 @UntilDestroy()
 @Component({
   selector: 'app-portfolio',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   animations: [
     trigger('checkBlock', [
@@ -36,9 +35,8 @@ export class PortfolioComponent implements OnInit{
   currentLanguage: string | undefined;
   visible = false;
 
-  constructor(private dataService: AboutService,
-              private projectService: PortfolioService,
-              private scrollService: ScrollService) {
+  constructor(private languageService: LanguageService,
+              private projectService: PortfolioService) {
   }
 
   ngOnInit() {
@@ -47,8 +45,8 @@ export class PortfolioComponent implements OnInit{
   }
 
   getProjects(): void {
-    this.scrollService.getLanguageUpdate().pipe(untilDestroyed(this)).subscribe(language => {
-      this.currentLanguage = language;
+    this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
+      this.currentLanguage = currentLanguage
       this.projectService.getProjects(this.currentLanguage).pipe(untilDestroyed(this)).subscribe(experience => {
         this.workItems = experience;
       });

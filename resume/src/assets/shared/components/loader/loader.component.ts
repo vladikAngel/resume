@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
-import {ScrollService} from "../../../../app/core/services/scroll.service";
+import {NgxSpinnerModule} from "ngx-spinner";
 import {NgIf} from "@angular/common";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {LanguageService} from "../../../../app/core/services/language.service";
 
+@UntilDestroy()
 @Component({
   selector: 'app-loader',
   standalone: true,
@@ -28,12 +30,12 @@ export class LoaderComponent implements OnInit {
     this.getSwitchLanguage()
   }
 
-  constructor(private scrollService: ScrollService,) {}
+  constructor(private languageService: LanguageService) {}
 
   getSwitchLanguage() {
-    this.scrollService.getLanguageUpdate().subscribe(language => {
-      this.currentLanguage = language;
-    });
+    this.languageService.language$.pipe(untilDestroyed(this)).subscribe(currentLanguage =>{
+      this.currentLanguage = currentLanguage
+    })
   }
 
 }
